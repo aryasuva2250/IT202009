@@ -51,6 +51,7 @@ if(isset($_POST["register"])){
 		$e = $stmt->errorInfo();
 		if($e[0] == "00000"){
 			echo "<br>Welcome! You successfully registered, please login.";
+			echo "<br>https://github.com/aryasuva2250/IT202009.git<br>";
 		}
 		else{
 			echo "uh oh something went wrong: " . var_export($e, true);
