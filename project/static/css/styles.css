@@ -1,0 +1,221 @@
+body {
+    text-align: center;
+    font-family: Arial;
+    font-size: 1.5em;
+    background-color: #B0E0E6;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+ul[class="nav"]{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00008B;
+}
+
+.nav > li {
+    float: left;
+}
+div.sk{
+    font-size: 100;
+    color: #00008B;
+    font-family: Arial Black;
+}
+div.welcome{
+    font-size: 75;
+    color: #00008B;
+    font-family: Arial;
+}
+div.reg{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 30px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+div.reg1{
+    font-weight: bold;
+}
+div.reg2{
+    font-weight: bold;
+}
+div.reg3{
+    font-weight: bold;
+}
+div.reg4{
+    font-weight: bold;
+}
+div.reg5{
+    color: #00008B;
+    border-color: #00008B;
+    font-size: 50;
+    padding: 15x 10x;
+    display: inline-block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 50px;
+}
+div.log{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 100px 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top 10px;
+}
+div.log2{
+    font-weight: bold;
+}
+div.log3{
+    font-weight: bold;
+}
+div.log4{
+    color: #00008B;
+    border-color: #00008B;
+    font-size: 50;
+    padding: 15x 10x;
+    display: inline-block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 50px;
+}
+div.prof{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+div.prof1{
+    font-weight: bold;
+}
+div.prof2{
+    font-weight: bold;
+}
+div.prof3{
+    font-weight: bold;
+}
+div.prof4{
+    font-weight: bold;
+}
+div.prof5{
+    color: #00008B;
+    border-color: #00008B;
+    font-size: 50;
+    padding: 15x 10x;
+    display: inline-block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 50px;
+}
+.nav > li a {
+    text-align: center;
+    display: block;
+    color: #B0E0E6;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    text-decoration: underline;
+}
+
+.nav > li a:hover {
+    background-color: #0000CD;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00008B;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    font-size: 25px;
+    background-color: #00008B;
+    color: #B0E0E6;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border-color: #00008B;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*
+input:nth-of-type(1) {
+    background-color: #FFFFFF;
+    color: #00008B;
+    border-color: #00008B;
+    padding: 5px 5px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+
+input:nth-of-type(2) {
+    background-color: #FFFFFF;
+    color: #B0E0E6;
+    border-color: #00008B;
+    padding: 5px 5px;
+    display: block;	
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+
+input:nth-of-type(3) {
+    background-color: #FFFFFF;
+    color: #B0E0E6;
+    border-color: #00008B;
+    padding: 5px 5px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+
+input:nth-of-type(4) {
+    background-color: #FFFFFF;
+    color: #B0E0E6;
+    border-color: #00008B;
+    padding: 5px 5px;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 10px;
+}
+
+input:nth-of-type(5) {
+    background-color: #00008B;
+    color: #B0E0E6;
+    border-color: #00008B;
+    font-size: 30;
+    padding: 15x 10x;
+    display: block;
+    margin-left: auto !important;
+    width: 250px;
+    margin-right: auto !important;
+    margin-top: 50px;
+}
+*/
