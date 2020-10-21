@@ -1,6 +1,7 @@
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
 if (!is_logged_in()) {
+	flash("You must be logged in to access this page");
 	die(header("Location: login.php"));
 }
 $db = getDB();
@@ -21,7 +22,8 @@ if (isset($_POST["saved"])) {
 			}
 		}
 		if ($inUse > 0) {
-			echo "Email is already in use";
+			//echo "Email is already in use";
+			flash("Email already in use");
 			$isValid = false;
 		}
 		else{
@@ -43,7 +45,8 @@ if (isset($_POST["saved"])) {
 			}
 		}
 		if ($inUse > 0) {
-			echo "Username is already in use";
+			//echo "Username is already in use";
+			flash("Username already in use");
 			$isValid = false;
 		}
 		else{
@@ -54,10 +57,12 @@ if (isset($_POST["saved"])) {
 		$stmt = $db->prepare("UPDATE Users set email = :email, username= :username where id = :id");
 		$r = $stmt->execute([":email" => $newEmail, ":username" => $newUsername, ":id" => get_user_id()]);
 		if ($r){
-			echo "Updated profile";
+			//echo "Updated profile";
+			flash("Updated profile");
 		}
 		else{
-			echo "Error updating profile";
+			//echo "Error updating profile";
+			flash("Error updating profile");
 		}
 		if (!empty($_POST["password"]) && !empty($_POST["confirm"])) {
 			if ($_POST["password"] == $_POST["confirm"]) {
@@ -66,10 +71,12 @@ if (isset($_POST["saved"])) {
 				$stmt = $db->prepare("UPDATE Users set password = :password where id = :id");
 				$r = $stmt->execute([":id" => get_user_id(), ":password" => $hash]);
 				if ($r){
-					echo "Reset password";
+					//echo "Reset password";
+					flash("Reset Password");
 				}
 				else{
-					echo "Error resetting password";
+					//echo "Error resetting password";
+					flash("Error resetting password");
 				}
 			}
 		}
@@ -87,15 +94,28 @@ if (isset($_POST["saved"])) {
 	}
 }
 ?>
+<div class="prof">
 <form method="POST">
+	<div class="prof1">
 	<label for="email">Email</label>
 	<input type="email" name="email" value="<?php safer_echo(get_email()); ?>"/>
+	</div>
+	<div class="prof2">
 	<label for="username">Username</label>
 	<input type="text" maxlength="60" name="username" value="<?php safer_echo(get_username()); ?>"/>
+	</div>
+	<div class="prof3">
 	<!-- DO NOT PRELOAD PASSWORD-->
 	<label for="pw">Password</label>
 	<input type="password" name="password"/>
+	</div>
+	<div class="prof4">
 	<label for="cpw">Confirm Password</label>
 	<input type="password" name="confirm"/>
+	</div>
+	<div class="prof5">
 	<input type="submit" name="saved" value="Save Profile"/>
+	</div>
 </form>
+</div>
+<?php require(__DIR__ . "/partials/flash.php");
