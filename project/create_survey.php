@@ -6,11 +6,17 @@ if (!has_role("User")) {
     die(header("Location: login.php"));
 }
 ?>
+<div class="createSurvey">
 <form method="POST">
+    <div class="createTitle">
     <label>Survey Title</label>
     <input name="title" placeholder="Title"/>
+    </div>
+    <div class="createDescription">
     <label>Survey Description</label>
     <input type="text" name="description"/>
+    </div>
+    <div class="createCategory">
     <label>Survey Category</label>
     <select name="category">
         <option value="Volunteer Feedback">Volunteer Feedback</option>
@@ -22,17 +28,24 @@ if (!has_role("User")) {
         <option value="Cars">Cars</option>
         <option value="Other">Other</option>
     </select>
+    </div>
+    <div class="createVisibility">
     <label>Survey Visibility</label>
     <select name="visibility">
         <option value="Draft">Draft</option>
         <option value="Private">Private</option>
         <option value="Public">Public</option>
     </select>
+    </div>
+    <div class="createDate">
     <label name="date">Date</label>
     <input type="date" id="date" name="date">
+    </div>
+    <div class="createSubmit">
     <input type="submit" name="save" value="Create"/>
+    </div>
 </form>
-
+</div>
 <?php
 if(isset($_POST["save"])){
     $title = $_POST["title"];
