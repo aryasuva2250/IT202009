@@ -1,0 +1,4 @@
+ALTER TABLE Question 
+    ADD created TIMESTAMP default CURRENT_TIMESTAMP on update   CURRENT_TIMESTAMP,
+    ADD modified TIMESTAMP default CURRENT_TIMESTAMP;
+
