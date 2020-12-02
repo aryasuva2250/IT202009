@@ -68,6 +68,7 @@ if (isset($_POST["search"]) && !empty($query)) {
                     <div class="listButtons">
                         <a type="button" href="edit_survey.php?id=<?php safer_echo($r['id']); ?>">Edit</a>
                         <a type="button" href="view_survey.php?id=<?php safer_echo($r['id']); ?>">View</a>
+			<a type="button" href="create_question.php?id=<?php safer_echo($r['id']); ?>">Add Question</a>
                     </div>
                 </div>
             <?php endforeach; ?>
