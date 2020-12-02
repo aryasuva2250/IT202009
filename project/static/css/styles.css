@@ -122,6 +122,176 @@ div.prof5{
     margin-right: auto !important;
     margin-top: 50px;
 }
+div.createSurvey{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 70px;
+}
+div.createTitle{
+    font-weight: bold;
+}
+div.createDescription{
+    font-weight: bold;
+}
+div.createCategory{
+    font-weight: bold;
+}
+div.createVisibility{
+    font-weight: bold;
+}
+div.createDate{
+    font-weight: bold;
+}
+div.createSubmit{
+    font-weight: bold;
+}
+div.listSurvey{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 25px;
+}
+div.listSearch{
+    font-weight: bold;
+    font-size: 40px;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+}
+div.listSubmit{
+    font-weight: bold;
+}
+div.listTitle{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listDescription{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listCategory{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listVisibility{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listDate{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listOwner{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.listButtons{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+}
+div.createQuestion{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 40px;
+}
+div.createQForm{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 25px;
+}
+div.createQ{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 30px;
+    text-decoration: underline;
+}
+div.createQSubmit{
+    font-weight: bold;
+}
+div.listQuestionForm{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 25px;
+}
+div.listQuestion{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 40px;
+}
+div.listQTitle{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 30px;
+    text-decoration: underline;
+}
+div.listQOwner{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 30px;
+    text-decoration: underline;
+}
+div.listQSurvey{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 30px;
+    text-decoration: underline;
+}
+div.createAnswer{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 40px;
+}
+div.createAnswerForm{
+    color: #00008B;
+    border-color: #00008B;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 25px;
+}
+div.createA{
+    font-weight: bold;
+    color: #00008B;
+    font-size: 25px;
+    text-decoration: underline;
+}
+div.createASubmit{
+    font-weight: bold;
+}
 .nav > li a {
     text-align: center;
     display: block;
