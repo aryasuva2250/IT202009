@@ -5,8 +5,14 @@ if (!is_logged_in()) {
 	die(header("Location: login.php"));
 }
 $db = getDB();
+$stmt = $db->prepare("SELECT visibility from Users WHERE id = :id LIMIT 1");
+$stmt->execute([":id" => get_user_id()]);
+$v = $stmt->fetch(PDO::FETCH_ASSOC);
+$visibility = $v["visibility"];
+$result = [];
 if (isset($_POST["saved"])) {
 	$isValid = true;
+	$result = [];
 	$newEmail = get_email();
 	if (get_email() != $_POST["email"]) {
 		$email = $_POST["email"];
@@ -54,8 +60,9 @@ if (isset($_POST["saved"])) {
 		}
 	}
 	if ($isValid){
-		$stmt = $db->prepare("UPDATE Users set email = :email, username= :username where id = :id");
-		$r = $stmt->execute([":email" => $newEmail, ":username" => $newUsername, ":id" => get_user_id()]);
+		$visibility = $_POST["visibility"];
+		$stmt = $db->prepare("UPDATE Users set email = :email, username= :username, visibility= :visibility where id = :id");
+		$r = $stmt->execute([":email" => $newEmail, ":username" => $newUsername, ":id" => get_user_id(), ":visibility" => $visibility]);
 		if ($r){
 			//echo "Updated profile";
 			flash("Updated profile");
@@ -80,12 +87,13 @@ if (isset($_POST["saved"])) {
 				}
 			}
 		}
-		$stmt = $db->prepare("SELECT email, username from Users WHERE id = :id LIMIT 1");
+		$stmt = $db->prepare("SELECT email, username, visibility from Users WHERE id = :id LIMIT 1");
 		$stmt->execute([":id" => get_user_id()]);
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		if ($result) {
 			$email = $result["email"];
 			$username = $result["username"];
+			$visibility = $result["visibility"];
 			$_SESSION["user"]["email"] = $email;
 			$_SESSION["user"]["username"] = $username;
 		}
@@ -98,7 +106,7 @@ if (isset($_POST["saved"])) {
 <form method="POST">
 	<div class="prof1">
 	<label for="email">Email</label>
-	<input type="email" name="email" value="<?php safer_echo(get_email()); ?>"/>
+	<input name="email" value="<?php safer_echo(get_email()); ?>"/>
 	</div>
 	<div class="prof2">
 	<label for="username">Username</label>
@@ -111,8 +119,13 @@ if (isset($_POST["saved"])) {
 	</div>
 	<div class="prof4">
 	<label for="cpw">Confirm Password</label>
-	<input type="password" name="confirm"/>
+	<input class="prof4" type="password" name="confirm"/>
 	</div>
+	<label>Visibility</label>
+	<select name="visibility" value="<?php echo $result["visibility"];?>">
+	    <option value="1" <?php echo ($result["visibility"] == "1"?'selected="selected"':'');?>>Private</option>
+	    <option value="2" <?php echo ($result["visibility"] == "2"?'selected="selected"':'');?>>Public</option>
+	</select>
 	<div class="prof5">
 	<input type="submit" name="saved" value="Save Profile"/>
 	</div>
