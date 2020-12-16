@@ -1,15 +1,17 @@
+<?php 
+//user's surveys
+?>
 <?php require_once(__DIR__ . "/partials/nav.php"); ?>
 <?php
-if (!has_role("User")) {
+if (!is_logged_in()) {
     //this will redirect to login and kill the rest of this script (prevent it from executing)
     flash("You don't have permission to access this page");
     die(header("Location: login.php"));
 }
 ?>
 <?php
-$results = [];
 $db = getDB();
-$stmt = $db->prepare("SELECT id, title, description, category, visibility, FROM Surveys where user_id = :id ORDER BY created LIMIT 10");
+$stmt = $db->prepare("SELECT id, title, description, category, visibility, user_id from Surveys WHERE user_id = :id LIMIT 10");
 
 $r = $stmt->execute([":id" => get_user_id()]);
 if($r){
@@ -23,34 +25,45 @@ if(isset($results)){
     $count = count($results);
 }
 ?>
-<div class=”container-fluid”>
-    <h3>All Surveys (<?php echo $count; ?>)</h3>
-    <div class="list-group">
-        <?php if (isset($results) && $count > 0): ?>
-	     <div class="list-group-item">
-	         <div class="row">
-		     <div class="col-8">Title</div>
-		     <div class="col-5">Description</div>
-		     <div class="col-2">Category</div>
-		     <div class="col-2">Visibility</div>
-		 </div>
-	     </div>
+<div class="AllYourSurveys">
+<h3>All Your Surveys</h3>
+</div>
+<div class=”result”>
+    <?php if (count($results) > 0): ?>
+        <div class="list-group">
 	     <?php foreach ($results as $s): ?>
 	         <div class="list-group-item">
-		      <div class="row">
-		          <div class="col-8"><?php safer_echo($s["title"]); ?></div>
-		         <div class=”col-5”><?php safer_echo($s["description"]); ?></div>
-		         <div class=”col-2”><?php safer_echo($s["category"]); ?></div>
-		        <div class=”col-2”><?php getState($s["visibility"]); ?></div>
+		     <div class="YourSurveysTitle">
+		         <div> Title: </div> 
+		     </div>
+		     <div class="YourSurveysTitleResult">
+			 <?php safer_echo($s["title"]); ?>
+		     </div>
+		     <div class="YourSurveysOwner">
+		         <div>Owner: </div> 
+		     </div>
+		     <div class="YourSurveysOwnerResult">
+			 <?php safer_echo($s["user_id"]); ?> 
+		     </div>
+		     <div class="YourSurveysCategory">
+		        <div>Category: </div>
+		     </div>
+		     <div class="YourSurveysCategoryResult">
+			<?php safer_echo($s["category"]);?>
+		     </div>
+		     <div class="YourSurveysVisibility">
+		         <div>Visibility: </div> 
+		     </div>
+		     <div class="YourSurveysVisibilityResult">
+			 <?php safer_echo($s["visibility"]);?>
+		     </div>
 		</div>
+		<a type="button" href="create_question.php?id=<?php safer_echo($s['id']); ?>">Add Question</a>
+	    <?php endforeach; ?>
 	   </div>
-<?php endforeach; ?>
+    <?php else: ?>
+        <p>No Surveys</p>
+    <?php endif; ?>
 </div>
-<form method="POST">
-	<input type="submit" name="results" value="Results Page"/>
-</form>
-<?php else: ?>
-    <p>No Surveys.</p>
-<?php endif; ?>
 <?php require(__DIR__ . "/partials/flash.php");
 
