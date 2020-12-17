@@ -53,23 +53,36 @@ if(isset($id)){
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 ?>
-
+<div class="editSurveyForm">
 <form method="POST">
-	<label>Title</label>
+     <div class="editTitle">
+        <label>Title</label>
+    </div>
 	<input name="title" placeholder="Title" value="<?php echo $result["title"];?>"/>
+	<div class="editDescription">
 	<label>Description</label>
+    </div>
 	<input type="text" name="description"/>
+	<div class="editCategory">
 	<label>Category</label>
+	</div>
 	<input type=”text” name="category"/>
+	<div class="editVisibility">
 	<label>Visibility</label>
+	</div>
 	<select name="visibility" value="<? echo $result["visibility"];?>">
 		<option value="Draft" <?php echo ($result["visibility"] == "Draft"?'selected="selected"':'');?>>Draft</option>
 		<option value="Private" <?php echo ($result["visibility"] == "Private"?'selected="selected"':'');?>>Private</option>
 		<option value="Public" <?php echo ($result["visibility"] == "Public"?'selected="selected"':'');?>>Public</option>
 	</select>
+	<div class="editDate">
 	<label>Date</label>
+	</div>
 	<input type=”date” name="date"/>
+	<div class="editSubmit">
 	<input type="submit" name="save" value="Update"/>
+	</div>
 </form>
+</div>
 
 <?php require(__DIR__ . "/partials/flash.php");
