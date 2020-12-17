@@ -66,7 +66,16 @@ if(isset($id)){
 	<div class="editCategory">
 	<label>Category</label>
 	</div>
-	<input type=”text” name="category"/>
+	<select name="category">
+	    <option value="Volunteer Feedback">Volunteer Feedback</option>
+	    <option value="Event Feedback">Event Feedback</option>
+	    <option value="Event Registration">Event Registration</option>
+	    <option value="Quiz">Quiz</option>
+	    <option value="Customer Feedback">Customer Feedback</option>
+	    <option value="Food">Food</option>
+	    <option value="Cars">Cars</option>
+	    <option value="Other">Other</option>
+	</select>
 	<div class="editVisibility">
 	<label>Visibility</label>
 	</div>
