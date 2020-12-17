@@ -345,6 +345,34 @@ div.AdminEditSurveyVisib{
 div.AdminEditSurveyDate{
     font-weight: bold;
 }
+div.editSurveyForm{
+    color: #5B0E2D;
+    border-color: #5B0E2D;
+    padding: 50x 10px;
+    display: block;
+    margin-left: auto !important;
+    width: 450px;
+    margin-right: auto !important;
+    margin-top: 25px;
+}
+div.editTitle{
+    font-weight: bold;
+}
+div.editDescription{
+    font-weight: bold;
+}
+div.editCategory{
+    font-weight: bold;
+}
+div.editVisibility{
+    font-weight: bold;
+}
+div.editDate{
+    font-weight: bold;
+}
+div.editSubmit{
+    font-weight: bold;
+}
 .nav > li a {
     text-align: center;
     display: block;
