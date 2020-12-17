@@ -183,14 +183,44 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <ul class="pagination justify-content-center">
     <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
         <div class="ProfilePrevious">
-        <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>    
-        </div>
+        <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>
+	</div>
     </li>
     <?php for($i = 0; $i < $total_pages; $i++):?>
     <li class="page-item <?php echo ($page-1) == $i?"active":"";?>"><a class="page-link" href="?page=<?php echo ($i+1);?>"><?php echo ($i+1);?></a></li>
     <?php endfor; ?>
     <li class="page-item <?php echo ($page+1) >= $total_pages?"disabled":"";?>">
         <div class="ProfileNext">
+	<a class="page-link" href="?page=<?php echo $page+1;?>">Next</a>
+        </div>
+    </li>
+</ul>
+</nav>
+<h3>Surveys Taken</h3>
+<div class="results">
+    <?php if(count($results) > 0): ?>
+        <?php foreach($results as $s): ?>
+	    <div>
+	        <div>Title: <?php safer_echo($s["title"]); ?></div>
+	    </div>
+	<?php endforeach; ?>
+    <?php else: ?>
+        <p>No Taken Surveys</p>
+    <?php endif; ?>
+</div>
+
+<nav aria-label="Surveys Taken">
+<ul class="pagination justify-content-center">
+    <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
+         <div class="ProfileTakenPrevious">
+        <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>
+        </div>
+    </li>
+    <?php for($i = 0; $i < $total_pages; $i++):?>
+        <li class="page-item <?php echo ($page-1) == $i?"active":"";?>"><a class="page-link" href="?page=<?php echo ($i+1);?>"><?php echo ($i+1);?></a></li>
+    <?php endfor; ?>
+    <li class="page-item <?php echo ($page+1) >= $total_pages?"disabled":"";?>">
+        <div class="ProfileTakenNext">
 	<a class="page-link" href="?page=<?php echo $page+1;?>">Next</a>
         </div>
     </li>
