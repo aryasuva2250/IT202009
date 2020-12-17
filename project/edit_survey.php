@@ -17,17 +17,16 @@ if(isset($_POST["save"])){
 	$description = $_POST["description"];
 	$category = $_POST["category"];
 	$visibility = $_POST["visibility"];
-	$date = $_POST["date"];
+	//$date = $_POST["date"];
 	$user = get_user_id();
 	$db = getDB();
 	if(isset($id)){
-		$stmt = $db->prepare("UPDATE Surveys set title=:title, description=:description, category=:category, visibility=:visibility, date=:date where id=:id");
+		$stmt = $db->prepare("UPDATE Surveys set title=:title, description=:description, category=:category, visibility=:visibility, where id=:id");
 		$r = $stmt->execute([
 			":title"=>$title,
 			":description"=>$description,
 			":category"=>$category,
 			":visibility"=>$visibility,
-			":date"=>$date,
 			":user"=>$user
 		]);
 				if($r){
@@ -84,10 +83,6 @@ if(isset($id)){
 		<option value="Private" <?php echo ($result["visibility"] == "Private"?'selected="selected"':'');?>>Private</option>
 		<option value="Public" <?php echo ($result["visibility"] == "Public"?'selected="selected"':'');?>>Public</option>
 	</select>
-	<div class="editDate">
-	<label>Date</label>
-	</div>
-	<input type=”date” name="date"/>
 	<div class="editSubmit">
 	<input type="submit" name="save" value="Update"/>
 	</div>
