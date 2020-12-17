@@ -102,6 +102,36 @@ if (isset($_POST["saved"])) {
 	}
 }
 ?>
+<?php
+$page = 1;
+$per_page = 10;
+if(isset($_GET["page"])){
+    try{
+        $page = (int)$_GET["page"];
+    }
+    catch(Exception $s){
+    }
+}
+$db = getDB();
+$stmt = $db->prepare("SELECT count(*) as total from Surveys s where s.user_id = :id");
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+$total = 0;
+if($result){
+    $total = (int)$result["total"];
+}
+$total_pages = ceil($total / $per_page);
+$offset = ($page-1) * $per_page;
+
+$stmt = $db->prepare("SELECT s.*, title from Surveys s WHERE s.user_id = :id LIMIT :offset, :count");
+$stmt->bindValue(":offset", $offset, PDO::PARAM_INT);
+$stmt->bindValue(":count", $per_page, PDO::PARAM_INT);
+$stmt->bindValue(":id", get_user_id());
+$s = $stmt->errorInfo();
+//if($s[0] != "00000"){
+  //  flash(var_export($s, true), "alert");
+//}
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <div class="prof">
 <form method="POST">
 	<div class="prof1">
@@ -131,4 +161,39 @@ if (isset($_POST["saved"])) {
 	</div>
 </form>
 </div>
+<h3>Surveys Created</h3>
+<div class="results">
+    <?php if(count($results) > 0): ?>
+        <div class="list-group">
+	    <?php foreach ($results as $r): ?>
+	        <div class="list-group-item">
+	            <div>
+		        <div class="ProfileSurveysCreate">Title: <?php safer_echo($r["title"]); ?></div>
+		    </div>
+	        </div>
+            <?php endforeach; ?>
+	</div>
+    <?php else: ?>
+        <p>No Created Surveys</p>
+    <?php endif; ?>
+</div>
+<div class="surveysCreated">
+<nav aria-label="Surveys Created">
+</div>
+<ul class="pagination justify-content-center">
+    <li class="page-item <?php echo ($page-1) < 1?"disabled":"";?>">
+        <div class="ProfilePrevious">
+        <a class="page-link" href="?page=<?php echo $page-1;?>" tabindex="-1">Previous</a>    
+        </div>
+    </li>
+    <?php for($i = 0; $i < $total_pages; $i++):?>
+    <li class="page-item <?php echo ($page-1) == $i?"active":"";?>"><a class="page-link" href="?page=<?php echo ($i+1);?>"><?php echo ($i+1);?></a></li>
+    <?php endfor; ?>
+    <li class="page-item <?php echo ($page+1) >= $total_pages?"disabled":"";?>">
+        <div class="ProfileNext">
+	<a class="page-link" href="?page=<?php echo $page+1;?>">Next</a>
+        </div>
+    </li>
+</ul>
+</nav>
 <?php require(__DIR__ . "/partials/flash.php");
